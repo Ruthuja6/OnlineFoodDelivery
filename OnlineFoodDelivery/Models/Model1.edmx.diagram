@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7aea81c2f1c14c0fad065062a4f4ce36" Name="Diagram1" ZoomLevel="105">
+        <EntityTypeShape EntityType="OnlineFoodDeliveryModel.admin" Width="1.5" PointX="6.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineFoodDeliveryModel.customer" Width="1.5" PointX="2.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineFoodDeliveryModel.product" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineFoodDeliveryModel.order" Width="1.5" PointX="5" PointY="1.5" />
+        <AssociationConnector Association="OnlineFoodDeliveryModel.FK__orders__producti__4F47C5E3" />
+        <EntityTypeShape EntityType="OnlineFoodDeliveryModel.addtocart" Width="1.5" PointX="2.625" PointY="1.375" />
+        <AssociationConnector Association="OnlineFoodDeliveryModel.FK__addtocart__produ__531856C7" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OnlineFoodDelivery.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-image: url('../../images/ddd.jpg');
+        background-repeat: no-repeat;
+        height: 1500px;
+        width: 1000px;
+        margin-top: -20px;
+        margin-left: 150px;
+        background-size: 1300px 650px;
+    }
+
+    .container-fluid {
+        background-color: gainsboro;
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <h3>Available FoodItems</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.productid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.productname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.productid }, new { style = "color:green" })
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    @Html.ActionLink("Back", "CustomerDashboard", "Customer", null, new { @class = "btn btn-outline-success btn-sm" })
+</body>

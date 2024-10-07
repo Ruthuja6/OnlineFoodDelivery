@@ -1,0 +1,63 @@
+﻿@model OnlineFoodDelivery.Models.customer
+@{
+    ViewBag.Title = "CustomerLogin";
+}
+<style>
+    .container-fluid {
+        background-image: url('../../images/customerlogin.jpeg');
+        background-repeat: no-repeat;
+        height: 600px ;
+        width: 800px ;
+        margin-top: -30px;
+    }
+    .form-group{
+        margin-left:280px;
+    }
+    h2 {
+        margin-left: 250px;
+    }
+    .form-group {
+        margin-left: 290px;
+    }
+    .div1 {
+        margin-top: -35px;
+        margin-left: 500px;
+    }
+</style>
+<div class="container-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2>Customer Login</h2>
+    <br />
+    
+        @using (Html.BeginForm("CustomerLogin", "Login", FormMethod.Post))
+        {
+            <div class="form-group mt-3">
+                <strong>@Html.LabelFor(m => m.username, new { style = "font-size: 20px; color:black" })</strong>
+                @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.username)
+            </div>
+            <div class="form-group mt-2">
+                <strong>@Html.LabelFor(m => m.password, new { style = "font-size: 20px; color:black" })</strong>
+                @Html.TextBoxFor(m => m.password, new { @class = "form-control", type = "password" })
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+
+
+            <div class="form-group mt-4">
+                <input type="submit" value="CustomerLogin" class="btn btn-outline-primary" />
+            </div>
+
+
+            if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+            }
+        }
+    
+    <div class="div1">
+        @Html.ActionLink("Back", "LoginPage", "Login", null, new { @class = "btn btn-outline-danger btn-sm" })
+    </div>
+</div>

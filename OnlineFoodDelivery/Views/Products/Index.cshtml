@@ -1,0 +1,75 @@
+﻿@model IEnumerable<OnlineFoodDelivery.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .table {
+        background-color: honeydew;
+/*        margin-left: 30px;*/
+    }
+    body {
+        
+        background-image: url('../../images/bacimg.jpg');
+        border-image-width:20px;
+        background-repeat: repeat;
+       
+    }
+    main {
+        margin-left: 60px;
+        height: 800px;
+        width: 1000px;
+    }
+    h3{
+        color:blanchedalmond;
+    }
+    
+</style>
+<body>
+    <main>
+        <h3>FoodItems List</h3><br />
+        @Html.ActionLink("Add Food Items", "Create", "Products", new { style = "color:Tomato;" })
+        <br /><br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.productid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.productname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.productid }, new { style = "color:DodgerBlue;" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.productid }, new { style = "color:MediumSeaGreen;" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.productid }, new { style = "color:red;" })
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Back", "AdminDashboard", "Admin", null, new { @class = "btn btn-outline-light btn-sm" })
+    </main>
+</body>

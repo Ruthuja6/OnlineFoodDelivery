@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "CustomerDashboard";
+}
+
+
+
+<style>
+    body{
+        background-image: url('../../images/customer dash.jpg');
+        background-repeat: no-repeat;
+       /*height: 700px;
+        width: 700px;*/
+        margin-top: -10px;
+        background-size: 1300px 600px;
+    }
+
+    .list-group-item {
+        margin-left: 100px;
+        font-family:'Lucida Sans';
+    }
+
+    h3 {
+        margin-left: 100px;
+        color: antiquewhite;
+    }
+    .div1{
+        margin-top:-30px;
+        margin-left:500px;
+    }
+    main{
+        border:1px solid white;
+        box-shadow:green 5px 5px 5px;
+        width:700px;
+        margin-left:100px;
+    }
+</style>
+<body>
+    <br />
+    
+    <h3>Customer Dashboard</h3>
+
+    <main>
+        <div class="col-md-5">
+
+            <ul class="list-group-horizontal">
+                <li class="list-group-item  mt-4">
+                    @Html.ActionLink("Available FoodItems", "Index", "AvailableFoodItems", null, new { @class = "btn btn-outline-primary btn-sm" })
+                </li>
+                <li class="list-group-item  mt-1">
+                    @Html.ActionLink("Add to Cart", "Index", "Addtocarts", null, new { @class = "btn btn-outline-info btn-sm" })
+                </li>
+                <li class="list-group-item  mt-1">
+                    @Html.ActionLink("OrderFood", "Create", "OrderFood", null, new { @class = "btn btn-outline-success btn-sm" })
+                </li>
+                <li class="list-group-item mt-1">
+                    @Html.ActionLink("Cancel Order", "Index", "CancelOrder", null, new { @class = "btn btn-outline-warning btn-sm" })
+                </li>
+            </ul>
+        </div>
+        <div class="div1">
+            @Html.ActionLink("Back to Login", "CustomerLogin", "Login", null, new { @class = "btn btn-outline-danger btn-sm" })
+        </div>
+        <br />
+    </main>
+</body>

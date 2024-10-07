@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+@model IEnumerable<OnlineFoodDelivery.Models.addtocart>
+
+@{
+    ViewBag.Title = "Index1";
+}
+<style>
+    body {
+        background-image: url('../../images/addtocart.jpg');
+        background-repeat: no-repeat;
+        height: 1500px;
+        width: 1000px;
+        margin-top: -20px;
+        margin-left: 50px;
+        background-size: 1300px 650px;
+    }
+
+    .table {
+        background-color: lavender;
+    }
+
+    p, h2 {
+        color: aquamarine;
+    }
+</style>
+<body>
+    <h2>Your Cart</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.product.productname</td>
+                    <td>@item.quantity</td>
+                    <td>@item.amount.ToString()</td>
+                    <td>
+                        @Html.ActionLink("Remove", "RemoveFromCart", new { cartItemId = item.cartid })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Available Products</h3>
+    @foreach (var product in Model.Select(i => i.product).Distinct())
+    {
+        <div>
+            <h4>@product.productname</h4>
+            <p>Price: @product.price.ToString()</p>
+            <form action="@Url.Action("AddToCart", "Addtocarts")" method="post">
+                <input type="hidden" name="productId" value="@product.productid" />
+                <label>Quantity:</label>
+                <input type="number" name="quantity" min="1" value="1" />
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    }
+</body>

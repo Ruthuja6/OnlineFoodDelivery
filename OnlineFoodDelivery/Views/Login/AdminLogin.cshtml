@@ -1,0 +1,63 @@
+﻿@model OnlineFoodDelivery.Models.admin
+@{
+    ViewBag.Title = "AdminLogin";
+}
+<style>
+    .container-fluid {
+        background-image: url('../../images/login.png');
+        background-repeat: no-repeat;
+        height: 550px;
+        width: 900px;
+        margin-top:-70px;
+       
+    }
+    .form-group{
+        margin-left:210px;
+    }
+    h2 {
+        margin-left: 200px;
+        
+    }
+    .form-group {
+        margin-left: 220px;
+    }
+    .div1 {
+        margin-top: -140px;
+        margin-left: 500px;
+    }
+    </style>
+<div class="container-fluid">
+    <br /><br /><br /><br />
+    <h2>Admin Login</h2>
+    <br /><br /><br /><br /><br />
+    
+
+        @using (Html.BeginForm("AdminLogin", "Login", FormMethod.Post))
+        {
+            <div class="form-group">
+                <strong>@Html.LabelFor(m => m.username)</strong>
+                @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.username)
+            </div>
+            <div class="form-group">
+                <strong>@Html.LabelFor(m => m.password)</strong>
+                @Html.TextBoxFor(m => m.password, new { @class = "form-control", type = "password" })
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="AdminLogin" class="btn btn-outline-primary btn-sm" />
+            </div>
+
+
+            if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+            }
+         }
+
+</div>
+<div class="div1">
+    @Html.ActionLink("Back", "LoginPage", "Login", null, new { @class = "btn btn-outline-danger btn-sm" })
+</div>

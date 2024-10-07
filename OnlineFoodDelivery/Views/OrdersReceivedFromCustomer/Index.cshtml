@@ -1,0 +1,99 @@
+﻿@model IEnumerable<OnlineFoodDelivery.Models.order>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-image: url('../../images/foodlist.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 1200px 1050px;
+    }
+</style>
+<body>
+    <br /><br />
+    <h4>Order Received From Customers</h4>
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentmethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cardnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cardholdername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cvv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expirydate)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.productname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentmethod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cardnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cardholdername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cvv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.expirydate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.productid }, new { style = "color:MediumSeaGreen;" }) 
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back to AdminDashboard", "AdminDashboard", "Admin", null, new { @class = "btn btn-info btn-sm" })
+</body>

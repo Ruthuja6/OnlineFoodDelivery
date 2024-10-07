@@ -1,0 +1,91 @@
+﻿@model IEnumerable<OnlineFoodDelivery.Models.customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-image: url('../../images/foodyimg.jpg');
+        background-repeat:no-repeat;
+        height: 1500px;
+        width: 1000px;
+        margin-top: -20px;
+        margin-left: 150px;
+        background-size: 1300px 650px;
+    }
+    .container-fluid {
+        background-color: lightgoldenrodyellow;
+    }
+    p{
+        margin-left:150px;
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <h2>Customers Details</h2>
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.customerid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.username)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emailid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phonenumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pincode)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.customerid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emailid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonenumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pincode)
+                    </td>
+                    <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.customerid},new { style = "color:crimson;" })
+                    </td>
+                </tr>
+             }
+        </table>
+        <br />
+    </div>
+    <br />
+    <p>
+        @Html.ActionLink("Back", "AdminDashboard", "Admin", null, new { @class = "btn btn-outline-danger btn-sm" })
+    </p>
+</body>

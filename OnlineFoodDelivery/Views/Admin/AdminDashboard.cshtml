@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashboard";
+}
+<style>
+    .container-fluid {
+        background-image: url('../../images/admindashboard.jpg');
+        background-repeat: no-repeat;
+        /*background-position:center;*/
+        height: 1500px;
+        width: 900px;
+        margin-top: -10px;
+        margin-left: 100px;
+        background-size: 900px 500px;
+    }
+
+    .list-group-item {
+        margin-left: 100px;
+        font-family: 'Lucida Sans';
+    }
+
+    h4 {
+        color: azure;
+        margin-left:100px;
+    }
+    .div1 {
+        margin-top: -10px;
+        margin-left: 700px;
+        display: inline-block;
+        padding: 4px 8px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #04AA6D;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 8px #999;
+    }
+</style>
+<div class="container-fluid">
+    <br /><br />
+    <h4>Admin Dashboard</h4>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+
+            <ul class="list-group-horizontal">
+                <li class="list-group-item  mt-4">
+                    @Html.ActionLink("Add FoodItems", "Index", "Products", null, new { @class = "btn btn-outline-primary btn-sm" })
+                </li>
+                <li class="list-group-item  mt-1">
+                    @Html.ActionLink("Edit FoodItems", "Index", "Products", null, new { @class = "btn btn-outline-info btn-sm" })
+                </li>
+                <li class="list-group-item  mt-1">
+                    @Html.ActionLink("Delete FoodItems", "Index", "Products", null, new { @class = "btn btn-outline-success btn-sm" })
+                </li>
+                <li class="list-group-item mt-1">
+                    @Html.ActionLink("Show FoodItems", "Index", "Products", null, new { @class = "btn btn-outline-warning btn-sm" })
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+
+            <ul class="list-group-horizontal">
+                <li class="list-group-item mt-4">
+                    @Html.ActionLink("Orders Received", "Index", "OrdersReceivedFromCustomer", null, new { @class = "btn btn-outline-secondary btn-sm" })
+                </li>
+                <li class="list-group-item mt-1">
+                    @Html.ActionLink("Customers Details", "Index", "CustomersDetails", null, new { @class = "btn btn-outline-danger btn-sm" })
+                </li>
+                <li class="list-group-item mt-1">
+                    @Html.ActionLink("Cancel Specific Order", "Index", "CancelSpecificOrder", null, new { @class = "btn btn-outline-light btn-sm" })
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="div1">
+        @Html.ActionLink("Logout", "AdminLogin", "Login", null, new { @class = "btn btn-outline-danger btn-sm" })
+    </div>
+</div>
+
+

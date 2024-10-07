@@ -1,0 +1,131 @@
+﻿@model OnlineFoodDelivery.Models.order
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    body {
+        background-image: url('../../images/ccc.jpg');
+        background-repeat: no-repeat;
+       /* height: 1500px;
+        width: 1000px;*/
+        margin-top: -20px;
+        margin-left: 100px;
+        background-size: 1300px 750px;
+    }
+    .container-fluid {
+        margin-left: 400px;
+    }
+
+    .form-group {
+        color: aliceblue;
+    }
+
+    h3 {
+        color: blanchedalmond;
+    }
+    .div1 {
+        margin-top: -50px;
+        margin-left: 250px;
+        
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <h3>Order Food</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.productid, "productid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("productid", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.productid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DeliveryAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.paymentmethod, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownListFor(m => m.paymentmethod, new SelectList(new List<SelectListItem>
+                        {
+                        new SelectListItem { Text = "Credit Card", Value = "Credit Card" }, new SelectListItem { Text = "Debit Card", Value = "Debit Card" }
+                        }, "Value", "Text"), new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.paymentmethod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cardnumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.cardnumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cardnumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cardholdername, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.cardholdername, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cardholdername, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cvv, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.cvv, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cvv, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.expirydate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.expirydate, new { htmlAttributes = new { @class = "form-control" ,type="date"} })
+                        @Html.ValidationMessageFor(model => model.expirydate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Order Food" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <div class="div1">
+            @Html.ActionLink("Back to List", "Index", new {style="color:red" })
+        </div>
+    </div>
+</body>

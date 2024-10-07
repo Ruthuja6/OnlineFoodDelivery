@@ -1,0 +1,84 @@
+﻿@model OnlineFoodDelivery.Models.customer
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url('../../images/foodlist.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 700px;
+        width: 1000px;
+    }
+
+    .dl-horizontal {
+        margin-left: 500px;
+    }
+
+    p {
+        margin-left: 500px;
+    }
+
+    h2 {
+        margin-left: 500px;
+    }
+</style>
+<h2>Details</h2>
+
+<div>
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pincode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pincode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "Index", "CustomersDetails", null, new { @class = "btn btn-success btn-sm" })
+</p>

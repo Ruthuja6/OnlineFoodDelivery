@@ -1,0 +1,84 @@
+﻿@model IEnumerable<OnlineFoodDelivery.Models.addtocart>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-image: url('../../images/addtocart.jpg');
+        background-repeat: no-repeat;
+        height: 1500px;
+        width: 1000px;
+        margin-top: -20px;
+        margin-left: 50px;
+        background-size: 1300px 650px;
+    }
+
+    .table {
+        background-color: lavender;
+    }
+
+    p {
+        color: aquamarine;
+    }
+</style>
+<body>
+    <h4>Add to cart</h4>
+
+    <p>
+        @Html.ActionLink("Add To Cart", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cartid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cartid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.productname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.cartid }, new { style = "color:red;" })
+                </td>
+                <td>
+                    @Html.ActionLink("Click here to increment quantity", "Index1", "Addtocarts", null, new { @class = "btn btn-outline-primary btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @Html.ActionLink("Back", "CustomerDashboard", "Customer", null, new { @class = "btn btn-outline-secondary btn-sm" })
+</body>

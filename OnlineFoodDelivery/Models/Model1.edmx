@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OnlineFoodDeliveryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="addtocart">
+          <Key>
+            <PropertyRef Name="cartid" />
+          </Key>
+          <Property Name="cartid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productid" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="amount" Type="float" />
+        </EntityType>
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="15" />
+          <Property Name="fullname" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="emailid" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phonenumber" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="pincode" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productid" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="amount" Type="float" />
+          <Property Name="DeliveryAddress" Type="varchar" MaxLength="50" />
+          <Property Name="paymentmethod" Type="varchar" MaxLength="50" />
+          <Property Name="cardnumber" Type="bigint" />
+          <Property Name="cardholdername" Type="varchar" MaxLength="50" />
+          <Property Name="cvv" Type="int" />
+          <Property Name="expirydate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="productname" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <Association Name="FK__addtocart__produ__531856C7">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="addtocart" Type="Self.addtocart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="addtocart">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orders__producti__4F47C5E3">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnlineFoodDeliveryModelStoreContainer">
+          <EntitySet Name="addtocart" EntityType="Self.addtocart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__addtocart__produ__531856C7" Association="Self.FK__addtocart__produ__531856C7">
+            <End Role="products" EntitySet="products" />
+            <End Role="addtocart" EntitySet="addtocart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orders__producti__4F47C5E3" Association="Self.FK__orders__producti__4F47C5E3">
+            <End Role="products" EntitySet="products" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineFoodDeliveryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailid" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <NavigationProperty Name="orders" Relationship="OnlineFoodDeliveryModel.FK__orders__producti__4F47C5E3" FromRole="product" ToRole="order" />
+          <NavigationProperty Name="addtocarts" Relationship="OnlineFoodDeliveryModel.FK__addtocart__produ__531856C7" FromRole="product" ToRole="addtocart" />
+        </EntityType>
+        <EntityContainer Name="OnlineFoodDeliveryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="orders" EntityType="OnlineFoodDeliveryModel.order" />
+          <AssociationSet Name="FK__orders__producti__4F47C5E3" Association="OnlineFoodDeliveryModel.FK__orders__producti__4F47C5E3">
+            <End Role="product" EntitySet="products" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <EntitySet Name="addtocarts" EntityType="OnlineFoodDeliveryModel.addtocart" />
+          <AssociationSet Name="FK__addtocart__produ__531856C7" Association="OnlineFoodDeliveryModel.FK__addtocart__produ__531856C7">
+            <End Role="product" EntitySet="products" />
+            <End Role="addtocart" EntitySet="addtocarts" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="amount" Type="Double" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paymentmethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cardnumber" Type="Int64" />
+          <Property Name="cardholdername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cvv" Type="Int32" />
+          <Property Name="expirydate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="product" Relationship="OnlineFoodDeliveryModel.FK__orders__producti__4F47C5E3" FromRole="order" ToRole="product" />
+        </EntityType>
+        <Association Name="FK__orders__producti__4F47C5E3">
+          <End Type="OnlineFoodDeliveryModel.product" Role="product" Multiplicity="0..1" />
+          <End Type="OnlineFoodDeliveryModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="addtocart">
+          <Key>
+            <PropertyRef Name="cartid" />
+          </Key>
+          <Property Name="cartid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="amount" Type="Double" />
+          <NavigationProperty Name="product" Relationship="OnlineFoodDeliveryModel.FK__addtocart__produ__531856C7" FromRole="addtocart" ToRole="product" />
+        </EntityType>
+        <Association Name="FK__addtocart__produ__531856C7">
+          <End Type="OnlineFoodDeliveryModel.product" Role="product" Multiplicity="0..1" />
+          <End Type="OnlineFoodDeliveryModel.addtocart" Role="addtocart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="addtocart">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineFoodDeliveryModelStoreContainer" CdmEntityContainer="OnlineFoodDeliveryEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="OnlineFoodDeliveryModel.admin">
+              <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="OnlineFoodDeliveryModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="OnlineFoodDeliveryModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="OnlineFoodDeliveryModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="expirydate" ColumnName="expirydate" />
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="cardholdername" ColumnName="cardholdername" />
+                <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+                <ScalarProperty Name="paymentmethod" ColumnName="paymentmethod" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="addtocarts">
+            <EntityTypeMapping TypeName="OnlineFoodDeliveryModel.addtocart">
+              <MappingFragment StoreEntitySet="addtocart">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="cartid" ColumnName="cartid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "LoginPage";
+}
+<style>
+    .container-fluid {
+        background-image: url('../../images/clogin.jpg');
+        background-repeat: no-repeat;
+        height: 500px;
+        width: 1000px;
+        margin-top:-10px;
+    }
+    h3 {
+        margin-top:20px;
+        margin-left: 370px;
+        color: black;
+    }
+    .list-group-horizontal-md {
+        margin-left: 350px;
+       
+    }
+    
+</style>
+
+    <div class="container-fluid">
+        <br /><br />
+            <h3>Login Page</h3>
+            <div class="col-md-2 mt-5">
+                <ul class="list-group-horizontal-md">
+                    <li class="list-group-item mt-3">
+                        @Html.ActionLink("AdminLogin", "AdminLogin", "Login", null, new { @class = "btn btn-outline-danger btn-sm active" })
+                    </li>
+
+                    <li class="list-group-item mt-3">
+                        @Html.ActionLink("CustomerLogin", "CustomerLogin", "Login", null, new { @class = "btn btn-outline-success btn-sm active" })
+                    </li>
+                    <li class="list-group-item mt-3">
+                        <br />
+                        <strong>New_User_Please_Register </strong><br>
+                        @Html.ActionLink("Register", "CustomerRegister", "Login", null, new { @class = "btn btn-outline-primary btn-sm active" })
+                    </li>
+                </ul>
+            </div>
+    </div>
